@@ -42,7 +42,7 @@ namespace AlarmClockStateMachine
 
             while(true)
             {
-                if(DateTime.Now == _alarmTime)
+                if(DateTime.Now >= _alarmTime)
                 {
                     _machine.Fire(AlarmClockTriggers.ActivateAlarm);
                     break;
