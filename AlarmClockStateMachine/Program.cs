@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace AlarmClockStateMachine
 {
@@ -6,7 +7,13 @@ namespace AlarmClockStateMachine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            AlarmClockStateMachine acsm = new AlarmClockStateMachine(DateTime.Now.AddMinutes(1));
+            Console.WriteLine("Current State: " + acsm.State); //Should Be AlarmRinging
+            acsm.DeactivateAlarm();
+            Console.WriteLine("Current State: " + acsm.State); //Should Be AlarmIdle
+            acsm.ResetAlarm(DateTime.Now.AddMinutes(1));
+            Console.WriteLine("Current State: " + acsm.State); //Should Be AlarmSet
+            Console.ReadLine();
         }
     }
 }
